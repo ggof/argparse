@@ -1,3 +1,3 @@
-module github.com/akamensky/argparse
+module github.com/ggof/argparse
 
 go 1.13

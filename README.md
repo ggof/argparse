@@ -1,6 +1,6 @@
 # Golang argparse
 
-[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/akamensky) [![Go Reference](https://pkg.go.dev/badge/github.com/akamensky/argparse.svg)](https://pkg.go.dev/github.com/akamensky/argparse) [![Go Report Card](https://goreportcard.com/badge/github.com/akamensky/argparse)](https://goreportcard.com/report/github.com/akamensky/argparse) [![Coverage Status](https://coveralls.io/repos/github/akamensky/argparse/badge.svg?branch=master)](https://coveralls.io/github/akamensky/argparse?branch=master) [![Build Status](https://travis-ci.org/akamensky/argparse.svg?branch=master)](https://travis-ci.org/akamensky/argparse)
+[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/ggof) [![Go Reference](https://pkg.go.dev/badge/github.com/ggof/argparse.svg)](https://pkg.go.dev/github.com/ggof/argparse) [![Go Report Card](https://goreportcard.com/badge/github.com/ggof/argparse)](https://goreportcard.com/report/github.com/ggof/argparse) [![Coverage Status](https://coveralls.io/repos/github/ggof/argparse/badge.svg?branch=master)](https://coveralls.io/github/ggof/argparse?branch=master) [![Build Status](https://travis-ci.org/ggof/argparse.svg?branch=master)](https://travis-ci.org/ggof/argparse)
 
 Let's be honest -- Go's standard command line arguments parser `flag` terribly sucks. 
 It cannot come anywhere close to the Python's `argparse` module. This is why this project exists.
@@ -8,12 +8,14 @@ It cannot come anywhere close to the Python's `argparse` module. This is why thi
 The goal of this project is to bring ease of use and flexibility of `argparse` to Go. 
 Which is where the name of this package comes from.
 
+Special credits to `akamensky` for the project, this is but a humble fork to allow declaring sub-commands but not using them.
+
 #### Installation
 
 To install and start using argparse simply do:
 
 ```
-$ go get -u -v github.com/akamensky/argparse
+$ go get -u -v github.com/ggof/argparse
 ```
 
 You are good to go to write your first command line tool!
@@ -31,7 +33,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/akamensky/argparse"
+	"github.com/ggof/argparse"
 	"os"
 )
 
