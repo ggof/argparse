@@ -68,12 +68,7 @@ func (o *Command) addArg(a *arg) error {
 
 //parseSubCommands - Parses subcommands if any
 func (o *Command) parseSubCommands(args *[]string) error {
-	if o.commands != nil && len(o.commands) > 0 {
-		// If we have subcommands and 0 args left
-		// that is an error of SubCommandError type
-		if len(*args) < 1 {
-			return newSubCommandError(o)
-		}
+	if  len(o.commands) > 0 {
 		for _, v := range o.commands {
 			err := v.parse(args)
 			if err != nil {
@@ -83,9 +78,6 @@ func (o *Command) parseSubCommands(args *[]string) error {
 				return nil
 			}
 		}
-		// If we got here, there were subcommands to parse,
-		// but none were found, so return an error
-		return newSubCommandError(o)
 	}
 	return nil
 }

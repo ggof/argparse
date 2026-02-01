@@ -39,14 +39,14 @@ func TestInternalFunctionParse(t *testing.T) {
 		resultFileL []os.File
 	)
 	tt := []testCase{
-		testCase{"String Value", "[-f|--flag] must be followed by a string", &resultS},
-		testCase{"Int Value", "[-f|--flag] must be followed by an integer", &resultI},
-		testCase{"Float Value", "[-f|--flag] must be followed by a floating point number", &resultF},
-		testCase{"File Value", "[-f|--flag] must be followed by a path to file", &resultFile},
-		testCase{"String Values List", "[-f|--flag] must be followed by a string", &resultSL},
-		testCase{"Int Values List", "[-f|--flag] must be followed by an integer", &resultIL},
-		testCase{"Float Values List", "[-f|--flag] must be followed by a floating point number", &resultFL},
-		testCase{"File Values List", "[-f|--flag] must be followed by a path to file", &resultFileL},
+		{"String Value", "[-f|--flag] must be followed by a string", &resultS},
+		{"Int Value", "[-f|--flag] must be followed by an integer", &resultI},
+		{"Float Value", "[-f|--flag] must be followed by a floating point number", &resultF},
+		{"File Value", "[-f|--flag] must be followed by a path to file", &resultFile},
+		{"String Values List", "[-f|--flag] must be followed by a string", &resultSL},
+		{"Int Values List", "[-f|--flag] must be followed by an integer", &resultIL},
+		{"Float Values List", "[-f|--flag] must be followed by a floating point number", &resultFL},
+		{"File Values List", "[-f|--flag] must be followed by a path to file", &resultFileL},
 	}
 
 	//test all cases from table of cases
@@ -91,10 +91,10 @@ func TestFlagAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Flag: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Flag: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Flag: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Flag: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Flag: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Flag: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Flag: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Flag: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -443,10 +443,10 @@ func TestFlagCounterAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add FlagCounter: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add FlagCounter: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add FlagCounter: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add FlagCounter: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add FlagCounter: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add FlagCounter: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add FlagCounter: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add FlagCounter: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -669,10 +669,10 @@ func TestStringAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add String: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add String: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add String: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add String: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add String: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add String: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add String: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add String: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -793,10 +793,10 @@ func TestIntAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Int: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Int: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Int: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Int: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Int: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Int: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Int: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Int: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -964,10 +964,10 @@ func TestFileAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add File: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add File: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add File: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add File: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add File: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add File: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add File: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add File: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -1171,10 +1171,10 @@ func TestFileListAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add FileList: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add FileList: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add FileList: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add FileList: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add FileList: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add FileList: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add FileList: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add FileList: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -1249,10 +1249,10 @@ func TestFloatListAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add FloatList: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add FloatList: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add FloatList: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add FloatList: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add FloatList: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add FloatList: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add FloatList: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add FloatList: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -1315,10 +1315,10 @@ func TestIntListAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add IntList: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add IntList: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add IntList: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add IntList: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add IntList: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add IntList: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add IntList: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add IntList: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -1381,10 +1381,10 @@ func TestStringListAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add StringList: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add StringList: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add StringList: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add StringList: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add StringList: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add StringList: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add StringList: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add StringList: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -1434,10 +1434,10 @@ func TestListAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add StringList: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add StringList: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add StringList: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add StringList: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add StringList: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add StringList: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add StringList: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add StringList: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -1499,10 +1499,10 @@ func TestSelectorAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Selector: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Selector: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Selector: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Selector: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Selector: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Selector: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Selector: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Selector: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -1663,13 +1663,13 @@ func TestCommandMixedArgs1(t *testing.T) {
 			cmd1int    int
 		}
 		ct := []commandCase{
-			commandCase{
+			{
 				cmd:        cmd1,
 				cmd1flag:   true,
 				cmd1string: "test",
 				cmd1int:    val,
 			},
-			commandCase{
+			{
 				cmd:        cmd2,
 				cmd1flag:   false,
 				cmd1string: "",
@@ -1913,36 +1913,6 @@ func TestUsageHidden1(t *testing.T) {
 	}
 	if cmd1Usage != cmd1.Usage(nil) {
 		t.Errorf("%s", cmd1.Usage(nil))
-	}
-}
-
-func TestUsageSubCommand(t *testing.T) {
-	expected := `[sub]Command required
-usage: zooprog <Command> [-h|--help]
-
-               Program that walks us through the zoo
-
-Commands:
-
-  dog  We are going to see dog
-
-Arguments:
-
-  -h  --help  Print help information
-
-`
-
-	parser := NewParser("zooprog", "Program that walks us through the zoo")
-
-	// dog command
-	parser.
-		NewCommand("dog", "We are going to see dog"). // adds command to parser
-		NewCommand("speak", "Make the dog speak")     // adds subcommand to previous command
-
-	err := newSubCommandError(&parser.Command)
-	actual := parser.Usage(err)
-	if expected != actual {
-		t.Errorf("Expectations unmet. expected: %s, actual: %s", expected, actual)
 	}
 }
 
@@ -2392,10 +2362,10 @@ func TestFloatAddArgumentFail(t *testing.T) {
 		testName, shortArg, longArg, failureMessage string
 	}
 	tt := []testCase{
-		testCase{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Float: short name must not exceed 1 character"},
-		testCase{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Float: long name should be provided"},
-		testCase{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Float: long name flag1 occurs more than once"},
-		testCase{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Float: short name F occurs more than once"},
+		{testName: "Long short name", shortArg: "ff", longArg: "flag2", failureMessage: "unable to add Float: short name must not exceed 1 character"},
+		{testName: "Long name not provided", shortArg: "f", longArg: "", failureMessage: "unable to add Float: long name should be provided"},
+		{testName: "Long name twice", shortArg: "f", longArg: "flag1", failureMessage: "unable to add Float: long name flag1 occurs more than once"},
+		{testName: "Short name twice", shortArg: "F", longArg: "flag2", failureMessage: "unable to add Float: short name F occurs more than once"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.testName, func(t *testing.T) {
@@ -2690,7 +2660,7 @@ func TestCommandExitOnHelpTrue(t *testing.T) {
 
 func TestCommandExitOnHelpFalse(t *testing.T) {
 	exited := false
-	exit = func(n int) {
+	exit = func(_ int) {
 		exited = true
 	}
 

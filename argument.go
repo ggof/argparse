@@ -29,16 +29,16 @@ type ArgumentType int
 
 const (
 	Flag        ArgumentType = 0
-	FlagCounter              = 1
-	String                   = 2
-	Int                      = 3
-	Float                    = 4
-	File                     = 5
-	StringList               = 6
-	IntList                  = 7
-	FloatList                = 8
-	FileList                 = 9
-	Selector                 = 10
+	FlagCounter ArgumentType = 1
+	String      ArgumentType = 2
+	Int         ArgumentType = 3
+	Float       ArgumentType = 4
+	File        ArgumentType = 5
+	StringList  ArgumentType = 6
+	IntList     ArgumentType = 7
+	FloatList   ArgumentType = 8
+	FileList    ArgumentType = 9
+	Selector    ArgumentType = 10
 )
 
 // Arg interface provides exporting of arg structure, while exposing it
@@ -179,7 +179,7 @@ func (o *arg) reduceShortName(position int, args *[]string) {
 			// For args with size 1 (Flag,FlagCounter) we allow multiple shorthand in one
 			if o.size == 1 {
 				if strings.Contains(argument[1:], o.sname) {
-					(*args)[position] = strings.Replace(argument, o.sname, "", -1)
+					(*args)[position] = strings.ReplaceAll(argument, o.sname, "")
 					if (*args)[position] == "-" {
 						(*args)[position] = ""
 					}
@@ -232,7 +232,7 @@ func (o *arg) parseInt(args []string, argCount int) error {
 	return nil
 }
 
-func (o *arg) parseBool(args []string) error {
+func (o *arg) parseBool(_ []string) error {
 	//data of bool type is for Flag argument
 	*o.result.(*bool) = true
 	o.parsed = true
@@ -556,7 +556,7 @@ func (o *arg) setDefault() error {
 	if !o.parsed && o.opts != nil && o.opts.Default != nil {
 		switch o.result.(type) {
 		case *bool, *int, *float64, *string, *[]bool, *[]int, *[]float64, *[]string:
-			if reflect.TypeOf(o.result) != reflect.PtrTo(reflect.TypeOf(o.opts.Default)) {
+			if reflect.TypeOf(o.result) != reflect.PointerTo(reflect.TypeOf(o.opts.Default)) {
 				return fmt.Errorf("cannot use default type [%T] as value of pointer with type [%T]", o.opts.Default, o.result)
 			}
 			defaultValue := o.opts.Default

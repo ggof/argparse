@@ -16,7 +16,7 @@ const DisableDescription = "DISABLEDDESCRIPTIONWILLNOTSHOWUP"
 // will panic.
 const positionalArgName = "_positionalArg_%s_%d"
 
-//disable help can be invoked from the parse and then needs to be propogated to subcommands
+// disable help can be invoked from the parse and then needs to be propogated to subcommands
 var disableHelp = false
 
 // Command is a basic type for this package. It represents top level Parser as well as any commands and sub-commands
@@ -551,19 +551,13 @@ func (o *Command) SelectorPositional(allowed []string, opts *Options) *string {
 func message2String(msg interface{}) (string, bool) {
 	var result string
 	if msg != nil {
-		switch msg.(type) {
-		case subCommandError:
-			result = fmt.Sprintf("%s\n", msg.(error).Error())
-			if msg.(subCommandError).cmd != nil {
-				result += msg.(subCommandError).cmd.Usage(nil)
-			}
-			return result, true
+		switch msg := msg.(type) {
 		case error:
-			result = fmt.Sprintf("%s\n", msg.(error).Error())
+			result = fmt.Sprintf("%s\n", msg.Error())
 		case string:
-			result = fmt.Sprintf("%s\n", msg.(string))
+			result = fmt.Sprintf("%s\n", msg)
 		case fmt.Stringer:
-			result = fmt.Sprintf("%s\n", msg.(fmt.Stringer).String())
+			result = fmt.Sprintf("%s\n", msg.String())
 		}
 	}
 	return result, false
@@ -592,7 +586,7 @@ func (o *Command) getPrecedingCommands(chain *[]string, arguments *[]*arg) {
 // getSubCommands - collects info on subcommands of current command
 func (o *Command) getSubCommands(chain *[]string) []Command {
 	commands := make([]Command, 0)
-	if o.commands != nil && len(o.commands) > 0 {
+	if len(o.commands) > 0 {
 		*chain = append(*chain, "<Command>")
 		for _, v := range o.commands {
 			// Skip hidden commands
